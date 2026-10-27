@@ -13,8 +13,12 @@ import {
   INITIAL_IMPACT_STORIES
 } from '../data/initialData';
 
-const rawSupabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const rawSupabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Canonical Eusatis Supabase Project configuration
+const DEFAULT_SUPABASE_URL = "https://rwjfxzylfcxibdfkcbaz.supabase.co";
+const DEFAULT_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ3amZ4enlsZmN4aWJkZmtjYmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4NzgxNTEsImV4cCI6MjEwODQ1NDE1MX0.0Mizb3xPzYzwHmY7592lgvDg1RD-RYvItxnc1LURUlU";
+
+const rawSupabaseUrl = import.meta.env.VITE_SUPABASE_URL || DEFAULT_SUPABASE_URL;
+const rawSupabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || DEFAULT_SUPABASE_ANON_KEY;
 
 // Clean up any trailing /rest/v1 or trailing slashes automatically
 export const supabaseUrl = (rawSupabaseUrl || '')

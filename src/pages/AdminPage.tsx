@@ -102,22 +102,22 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
   const BRAND_IMAGE_PRESETS = [
     {
       name: 'STEM Education & Lab',
-      url: '/src/assets/images/eusatis_stem_learning_1792624719640.jpg',
+      url: '/assets/images/eusatis_stem_learning_1792624719640.jpg',
       category: 'Science & Education'
     },
     {
       name: 'Beyoutiful Talks Studio',
-      url: '/src/assets/images/eusatis_talks_studio_1792624720801.jpg',
+      url: '/assets/images/eusatis_talks_studio_1792624720801.jpg',
       category: 'Podcast & Reflection'
     },
     {
       name: 'Impact Community Outreach',
-      url: '/src/assets/images/eusatis_impact_community_1792624720900.jpg',
+      url: '/assets/images/eusatis_impact_community_1792624720900.jpg',
       category: 'Community & Society'
     },
     {
       name: 'Aha Moment of Discovery',
-      url: '/src/assets/images/eusatis_aha_moment_1792624721004.jpg',
+      url: '/assets/images/eusatis_aha_moment_1792624721004.jpg',
       category: 'Discovery & Insight'
     },
     {
@@ -2086,7 +2086,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                   <div className="w-28 h-20 rounded-xl overflow-hidden bg-slate-200 border border-slate-300 shrink-0">
                     <img
-                      src={editingResource.featured_image || '/src/assets/images/eusatis_aha_moment_1792624721004.jpg'}
+                      src={editingResource.featured_image || '/assets/images/eusatis_aha_moment_1792624721004.jpg'}
                       alt="Resource cover preview"
                       className="w-full h-full object-cover"
                     />
@@ -2112,7 +2112,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                         onClick={() =>
                           setEditingResource({
                             ...editingResource,
-                            featured_image: '/src/assets/images/eusatis_aha_moment_1792624721004.jpg'
+                            featured_image: '/assets/images/eusatis_aha_moment_1792624721004.jpg'
                           })
                         }
                         className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs text-slate-600 hover:text-slate-900 bg-white border border-slate-200 cursor-pointer"
@@ -2319,7 +2319,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                   <div className="w-20 h-20 rounded-xl overflow-hidden bg-slate-200 border border-slate-300 shrink-0">
                     <img
-                      src={editingEpisode.cover_image || '/src/assets/images/eusatis_talks_studio_1792624720801.jpg'}
+                      src={editingEpisode.cover_image || '/assets/images/eusatis_talks_studio_1792624720801.jpg'}
                       alt="Episode cover preview"
                       className="w-full h-full object-cover"
                     />
@@ -2345,7 +2345,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                         onClick={() =>
                           setEditingEpisode({
                             ...editingEpisode,
-                            cover_image: '/src/assets/images/eusatis_talks_studio_1792624720801.jpg'
+                            cover_image: '/assets/images/eusatis_talks_studio_1792624720801.jpg'
                           })
                         }
                         className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs text-slate-600 hover:text-slate-900 bg-white border border-slate-200 cursor-pointer"
@@ -2565,7 +2565,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                 <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
                   <div className="w-24 h-16 rounded-xl overflow-hidden bg-slate-200 border border-slate-300 shrink-0">
                     <img
-                      src={editingStory.featured_image || '/src/assets/images/eusatis_impact_community_1792624720900.jpg'}
+                      src={editingStory.featured_image || '/assets/images/eusatis_impact_community_1792624720900.jpg'}
                       alt="Impact initiative preview"
                       className="w-full h-full object-cover"
                     />
@@ -2591,7 +2591,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                         onClick={() =>
                           setEditingStory({
                             ...editingStory,
-                            featured_image: '/src/assets/images/eusatis_impact_community_1792624720900.jpg'
+                            featured_image: '/assets/images/eusatis_impact_community_1792624720900.jpg'
                           })
                         }
                         className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs text-slate-600 hover:text-slate-900 bg-white border border-slate-200 cursor-pointer"

@@ -46,7 +46,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
       <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xs aspect-[21/9] sm:aspect-[24/8] bg-slate-100">
         <DynamicImage
           id="plane_impact"
-          fallbackSrc="/src/assets/images/eusatis_impact_community_1792624720900.jpg"
+          fallbackSrc="/assets/images/eusatis_impact_community_1792624720900.jpg"
           alt="Eusatis Impact community action and stewardship"
           className="w-full h-full object-cover"
         />

@@ -3,8 +3,8 @@ import { ArrowLeft, MapPin, Calendar, Users, Share2, HandHeart, CheckCircle2, Pl
 import { ImpactStory } from '../types';
 import { renderUniversalVideoPlayer } from '../lib/videoUtils';
 
-function renderVideoPlayer(url: string) {
-  return renderUniversalVideoPlayer(url, 'Impact Video Documentary');
+function renderVideoPlayer(url: string, poster?: string) {
+  return renderUniversalVideoPlayer(url, 'Impact Video Documentary', poster);
 }
 
 interface ImpactDetailPageProps {
@@ -133,7 +133,7 @@ export const ImpactDetailPage: React.FC<ImpactDetailPageProps> = ({
               </a>
             </div>
             <div className="aspect-video w-full">
-              {renderVideoPlayer(story.video_url)}
+              {renderVideoPlayer(story.video_url, story.featured_image)}
             </div>
           </div>
         )}

@@ -38,8 +38,8 @@ export const TalksPage: React.FC<TalksPageProps> = ({ episodes, onNavigate }) =>
     return ep.tags.some((t) => t.toLowerCase().includes(selectedTag.toLowerCase()));
   });
 
-  const renderEpisodeVideo = (url: string) => {
-    return renderUniversalVideoPlayer(url, 'Beyoutiful Talks Broadcast');
+  const renderEpisodeVideo = (url: string, poster?: string) => {
+    return renderUniversalVideoPlayer(url, 'Beyoutiful Talks Broadcast', poster);
   };
 
   return (
@@ -72,7 +72,7 @@ export const TalksPage: React.FC<TalksPageProps> = ({ episodes, onNavigate }) =>
       <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xs aspect-[21/9] sm:aspect-[24/8] bg-slate-100">
         <DynamicImage
           id="plane_talks"
-          fallbackSrc="/src/assets/images/eusatis_talks_studio_1792624720801.jpg"
+          fallbackSrc="/assets/images/eusatis_talks_studio_1792624720801.jpg"
           alt="Beyoutiful Talks podcast recording studio and conversations"
           className="w-full h-full object-cover"
         />
@@ -132,7 +132,7 @@ export const TalksPage: React.FC<TalksPageProps> = ({ episodes, onNavigate }) =>
                 </div>
               </div>
               <div className="aspect-video w-full">
-                {renderEpisodeVideo(selectedEpisode.video_url)}
+                {renderEpisodeVideo(selectedEpisode.video_url, selectedEpisode.cover_image)}
               </div>
             </div>
           ) : (

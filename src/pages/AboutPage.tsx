@@ -89,7 +89,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
       <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-md relative aspect-[21/9] sm:aspect-[24/9] bg-slate-900 group">
         <DynamicImage
           id="plane_about"
-          fallbackSrc="/src/assets/images/eusatis_stem_learning_1792624719640.jpg"
+          fallbackSrc="/assets/images/eusatis_stem_learning_1792624719640.jpg"
           alt="Eusatis mission and educational clarity"
           className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700 opacity-90"
         />

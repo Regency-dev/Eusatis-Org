@@ -76,7 +76,7 @@ export const MindPage: React.FC<MindPageProps> = ({ resources, onNavigate }) => 
       <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-xs aspect-[21/9] sm:aspect-[24/8] bg-slate-100">
         <DynamicImage
           id="plane_mind"
-          fallbackSrc="/src/assets/images/eusatis_stem_learning_1792624719640.jpg"
+          fallbackSrc="/assets/images/eusatis_stem_learning_1792624719640.jpg"
           alt="Eusatis Mind interactive educational learning"
           className="w-full h-full object-cover"
         />

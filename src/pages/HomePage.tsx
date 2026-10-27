@@ -129,7 +129,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl aspect-[4/3] bg-slate-100">
                 <DynamicImage
                   id="hero_card"
-                  fallbackSrc="/src/assets/images/eusatis_stem_learning_1792624719640.jpg"
+                  fallbackSrc="/assets/images/eusatis_stem_learning_1792624719640.jpg"
                   alt="Students engaged in learning experiments at Eusatis"
                   className="w-full h-full object-cover"
                 />

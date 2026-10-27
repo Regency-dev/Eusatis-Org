@@ -35,7 +35,7 @@ export const AhaExperience: React.FC<AhaExperienceProps> = ({ onNavigate }) => {
   // Reactive site image configured in Admin Dashboard (plane_aha)
   const { url: ahaBgUrl, alt: ahaBgAlt } = useSiteImage(
     'plane_aha',
-    '/src/assets/images/eusatis_aha_moment_1792624721004.jpg'
+    '/assets/images/eusatis_aha_moment_1792624721004.jpg'
   );
 
   // Slideshow active index: 0 through 6

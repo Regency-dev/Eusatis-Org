@@ -8,8 +8,8 @@ import { MathText } from '../components/MathText';
 import { CreativeBadge } from '../components/CreativeBadge';
 import { renderUniversalVideoPlayer } from '../lib/videoUtils';
 
-function renderVideoPlayer(url: string) {
-  return renderUniversalVideoPlayer(url, 'Interactive Lesson Video');
+function renderVideoPlayer(url: string, poster?: string) {
+  return renderUniversalVideoPlayer(url, 'Interactive Lesson Video', poster);
 }
 
 interface MindDetailPageProps {
@@ -162,7 +162,7 @@ export const MindDetailPage: React.FC<MindDetailPageProps> = ({
               </a>
             </div>
             <div className="aspect-video w-full">
-              {renderVideoPlayer(resource.video_url)}
+              {renderVideoPlayer(resource.video_url, resource.featured_image)}
             </div>
           </div>
         )}
