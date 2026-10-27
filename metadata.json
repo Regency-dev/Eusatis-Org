@@ -1,0 +1,6 @@
+{
+  "name": "Eusatis – The Joy of Understanding More",
+  "description": "Official website for Eusatis: education, human development, Beyoutiful Talks podcast, interactive learning library, and community impact.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

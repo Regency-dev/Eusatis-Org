@@ -1,0 +1,1224 @@
+PROJECT TITLE: EUSATIS OFFICIAL WEBSITE
+PROJECT TYPE: Production-oriented, full-stack web application
+DEVELOPMENT ENVIRONMENT: Google AI Studio Build mode
+DATABASE AND AUTHENTICATION: Supabase
+DEPLOYMENT PLATFORM: Vercel
+SOURCE CONTROL: GitHub
+
+=========================================================
+ROLE AND OVERALL OBJECTIVE
+=========================================================
+
+Act as a senior full-stack software engineer, product designer,
+UX/UI specialist, database architect, security engineer, accessibility
+specialist, SEO strategist and software tester.
+
+Your task is to design and build the official EUSATIS website.
+
+This must be a polished, responsive, accessible, content-driven
+platform that can grow into a globally recognised education and
+human-development destination.
+
+Do not build a generic corporate website or a static landing page.
+
+Build an engaging digital experience that helps visitors learn,
+discover themselves, explore meaningful conversations and understand
+how knowledge can create positive change.
+
+The website must be suitable for real-world use, with a maintainable
+codebase, a properly structured database, secure authentication,
+functional content management, robust error handling and a deployment
+workflow compatible with Vercel.
+
+Use the uploaded EUSATIS Brand Manual as the primary authority for
+the brand's visual identity, logo, colours, typography and design
+principles.
+
+Do not invent brand elements that conflict with the manual.
+
+Do not claim that a feature has been implemented, tested or deployed
+unless that claim is supported by actual implementation and testing.
+
+=========================================================
+1. BRAND IDENTITY AND PHILOSOPHY
+=========================================================
+
+Brand name:
+EUSATIS
+
+Master tagline:
+The Joy of Understanding More.
+
+Core philosophy:
+UNDERSTAND. BECOME. IMPACT.
+
+Central brand idea:
+Understanding changes everything.
+
+Brand promise:
+EUSATIS makes understanding feel achievable.
+
+EUSATIS exists to make complex ideas easier to understand, create
+opportunities for self-discovery and meaningful conversations, and
+transform knowledge into actions that positively impact people
+and communities.
+
+The website should communicate:
+
+- Intellectual curiosity
+- Clarity and understanding
+- Authenticity
+- Personal development
+- Scientific thinking
+- Educational accessibility
+- Community responsibility
+- Meaningful impact
+- Optimism and possibility
+
+The emotional experience should reflect the moment when something
+that once seemed complicated suddenly becomes understandable.
+
+The website should make visitors feel welcomed, curious, capable
+of learning and encouraged to take their next step.
+
+Do not make the brand feel exclusively academic, overly corporate,
+childish, excessively decorative or dependent on generic motivational
+quotes.
+
+=========================================================
+2. VISUAL DESIGN SYSTEM
+=========================================================
+
+Follow the uploaded EUSATIS Brand Manual.
+
+BRAND COLOURS
+
+Cyan:
+#47C3D3
+
+Gold:
+#D6A348
+
+Terracotta:
+#D67546
+
+Slate Grey:
+#485358
+
+Soft Neutral:
+#EAE5E7
+
+Use these colours consistently and thoughtfully.
+
+Establish a coherent design system that defines:
+
+- Primary and secondary backgrounds
+- Text colours
+- Interactive states
+- Buttons and links
+- Cards and content panels
+- Borders and dividers
+- Focus indicators
+- Form fields
+- Error and success states
+- Light and dark surface treatments where appropriate
+
+Maintain sufficient contrast between text and backgrounds.
+
+Do not use all brand colours indiscriminately in every section.
+
+TYPOGRAPHY
+
+Use Pacaembu as the preferred typeface where the appropriate font
+files and usage rights are available.
+
+Use Hagrid Text selectively when appropriate and available.
+
+Provide reliable fallback fonts.
+
+Respect the manual's typography guidance, including readability,
+hierarchy, tracking and its preference for Title Case in ordinary
+headings.
+
+Use uppercase selectively for approved brand expressions.
+
+LOGO
+
+Use the supplied approved EUSATIS logo assets wherever available.
+
+Do not redraw, distort, recolour outside the approved palette,
+stretch or otherwise modify the logo in ways that contradict
+the Brand Manual.
+
+If the exact logo files are unavailable, create a clearly identified
+placeholder rather than inventing an unofficial replacement logo.
+
+SHAPES AND PATTERNS
+
+Use the manual's approved visual shapes and patterns as a subtle
+design language.
+
+Curved corners, oval forms and carefully balanced patterns may be
+used where appropriate.
+
+Do not allow decorative patterns to interfere with reading,
+navigation or accessibility.
+
+DESIGN QUALITY
+
+The website should feel distinctive, premium, contemporary,
+intelligent, warm and human.
+
+Use generous whitespace, strong visual hierarchy, meaningful imagery,
+well-designed content cards and intentional transitions.
+
+Avoid excessive gradients, unnecessary glass effects, random
+animations, generic AI illustrations and repetitive card layouts.
+
+The design must be visually engaging without sacrificing clarity.
+
+=========================================================
+3. WEBSITE STRUCTURE
+=========================================================
+
+The brand has three principal divisions.
+
+A. EUSATIS MIND
+B. EUSATIS IMPACT
+C. EUSATIS TALKS
+
+The website must make these three pathways immediately understandable.
+
+EUSATIS MIND focuses on learning and understanding.
+
+EUSATIS IMPACT focuses on applying knowledge to improve lives.
+
+EUSATIS TALKS creates space for authenticity, conversation,
+self-discovery and personal growth.
+
+Build a coherent navigation system connecting the three divisions.
+
+Recommended public navigation:
+
+Home
+Mind
+Impact
+Talks
+About
+Contact
+
+Do not add an Admin link to the public navigation.
+
+Do not add an Admin link to the public footer.
+
+Do not display administrative routes, dashboard controls or
+administrative login links anywhere on public-facing pages.
+
+The administrative interface must be separate from the public
+website experience.
+
+=========================================================
+4. HOMEPAGE EXPERIENCE
+=========================================================
+
+Build a compelling homepage that communicates the EUSATIS identity
+within the first few seconds.
+
+The homepage should include:
+
+A. HERO SECTION
+
+Display the EUSATIS logo, where available.
+
+Feature the tagline:
+
+"The Joy of Understanding More."
+
+Introduce the brand's central philosophy:
+
+"UNDERSTAND. BECOME. IMPACT."
+
+Include a concise explanation of what EUSATIS does.
+
+Provide clear pathways to:
+
+- Explore EUSATIS MIND
+- Discover EUSATIS IMPACT
+- Explore EUSATIS TALKS
+
+Use purposeful visual storytelling.
+
+Do not overload the hero with paragraphs, competing buttons or
+unnecessary animation.
+
+B. THE EUSATIS EXPERIENCE
+
+Explain how understanding can lead to personal growth and meaningful
+action.
+
+Communicate the relationship between learning, self-discovery
+and impact.
+
+C. FEATURED LEARNING
+
+Display selected lessons, educational articles and other resources
+from EUSATIS MIND.
+
+Content must come from the configured database.
+
+D. FEATURED TALKS
+
+Show selected BEYOUTIFUL TALKS episodes and other appropriate
+EUSATIS TALKS content.
+
+E. IMPACT STORIES
+
+Feature selected EUSATIS IMPACT initiatives, community projects
+and published stories.
+
+F. THE EUSATIS AHA
+
+Introduce the moment when a difficult idea becomes clear.
+
+Where actual interactive learning functionality is available, allow
+visitors to explore an explanation, example or learning resource.
+
+Do not simulate AI functionality that has not been implemented.
+
+G. NEWSLETTER
+
+Provide an optional newsletter subscription component.
+
+Connect it to a properly configured backend before accepting
+subscriptions.
+
+Provide validation, consent information, duplicate handling and
+clear success or failure messages.
+
+Do not expose subscriber information publicly.
+
+H. FOOTER
+
+Include the EUSATIS brand, public navigation, contact information
+when supplied, social links when configured, and legal links.
+
+Do not include any administrative navigation or dashboard link.
+
+=========================================================
+5. EUSATIS MIND
+=========================================================
+
+Build EUSATIS MIND as a searchable educational destination.
+
+Its initial subject focus should include:
+
+- Science
+- Biology
+- Chemistry
+- Physics
+- Mathematics
+- STEM
+
+Design the content architecture so more subjects and learning
+formats can be introduced without rebuilding the application.
+
+Provide a learning library containing published educational resources.
+
+Each resource should support relevant fields such as:
+
+- Title
+- URL slug
+- Short description
+- Full content
+- Subject
+- Category
+- Tags
+- Difficulty or learner level, when appropriate
+- Featured image
+- Video or external resource URL, when applicable
+- Author or attribution
+- Publication date
+- Last updated date
+- Search-engine title
+- Search-engine description
+- Publication status
+
+Support useful search, category filters and sorting.
+
+Allow visitors to open individual resource pages with unique URLs.
+
+Make long explanations easy to read through suitable typography,
+examples, diagrams and meaningful section headings.
+
+Where appropriate, include:
+
+- Learning objectives
+- Explanations
+- Worked examples
+- Knowledge checks
+- Frequently asked questions
+- Related learning resources
+- Suggested next steps
+
+Do not automatically invent scientific facts or present unverified
+educational content as authoritative.
+
+Use content supplied by the administrator and structure it clearly.
+
+Design the architecture so self-paced learning features can be added
+incrementally.
+
+Do not require visitor accounts unless a specific feature genuinely
+requires them.
+
+=========================================================
+6. EUSATIS IMPACT
+=========================================================
+
+Build EUSATIS IMPACT as a destination for community engagement
+and social contribution.
+
+It should communicate that understanding can create responsibility
+and that knowledge can be used to improve lives.
+
+Support the publication of:
+
+- Community initiatives
+- School-based projects
+- Educational outreach
+- Hospital and orphanage support
+- Community partnerships
+- Impact stories
+- Project updates
+- Volunteer opportunities
+- Calls for participation
+- Photographs and project documentation
+
+Each impact story should have its own public URL.
+
+Allow administrators to include:
+
+- Project title
+- Summary
+- Full story
+- Project category
+- Location, when appropriate
+- Featured image
+- Additional photographs
+- Project dates
+- Outcomes and evidence
+- Partners, when verified
+- Participation information
+- Publication status
+
+Never fabricate partnerships, beneficiaries, donations, statistics
+or success stories.
+
+Do not publish private information or photographs of identifiable
+children without appropriate permission.
+
+Use responsible storytelling that respects the dignity of
+the people and communities featured.
+
+Make participation opportunities clear without making unsupported
+promises about funding or services.
+
+=========================================================
+7. EUSATIS TALKS AND BEYOUTIFUL TALKS
+=========================================================
+
+Build EUSATIS TALKS as a destination for thoughtful conversations
+and personal development.
+
+Potential topics include:
+
+- Authenticity and identity
+- Purpose
+- Relationships
+- Education
+- Career development
+- Leadership
+- Personal growth
+- Social expectations
+- Finding one's voice
+- Learning from experience
+
+BEYOUTIFUL TALKS is the signature podcast under EUSATIS TALKS.
+
+The concept celebrates being genuine and resisting pressure to
+become someone else simply to satisfy social expectations.
+
+Build a podcast library containing published episodes.
+
+Each episode should support:
+
+- Episode title
+- URL slug
+- Episode summary
+- Full description
+- Episode number, when applicable
+- Publication date
+- Cover image
+- Audio URL
+- Video URL, when applicable
+- Transcript
+- Guest details, when applicable
+- Relevant categories or tags
+- Related episodes
+- Search-engine metadata
+- Publication status
+
+Support externally hosted audio and video.
+
+Provide an appropriate player or embed for supported providers.
+
+Handle unavailable media gracefully.
+
+Do not automatically download or rehost copyrighted content.
+
+Design episode pages for sharing, accessibility and search-engine
+discovery.
+
+=========================================================
+8. ABOUT EUSATIS
+=========================================================
+
+Create an About page explaining the brand's purpose, philosophy,
+vision and mission.
+
+Use the following vision:
+
+"To become a global platform that inspires people to understand
+more, become more and create meaningful impact."
+
+Use the following mission:
+
+"To make complex ideas easier to understand, create spaces for
+meaningful self-discovery and conversation, and transform knowledge
+into opportunities that positively impact people and communities."
+
+Explain the three divisions:
+
+EUSATIS MIND
+Learning and understanding.
+
+EUSATIS IMPACT
+Knowledge applied to meaningful change.
+
+EUSATIS TALKS
+Authenticity, conversation and self-discovery.
+
+Explain the relationship between the three divisions through:
+
+"UNDERSTAND. BECOME. IMPACT."
+
+Do not invent a founding date, founder biography, awards, partnerships
+or organisational history.
+
+Where founder information is needed, make it editable through
+the appropriate content-management process.
+
+=========================================================
+9. CONTACT PAGE
+=========================================================
+
+Create an accessible contact form with appropriate fields.
+
+Possible fields:
+
+- Name
+- Email address
+- Subject
+- Message
+
+Validate the submitted data.
+
+Use appropriate server-side validation and spam protection.
+
+Store submissions only through a configured, secure backend.
+
+Do not expose contact submissions to public users.
+
+Provide clear confirmation when a submission succeeds.
+
+If submission fails, explain the problem without exposing internal
+errors, credentials or sensitive implementation details.
+
+Do not pretend a message was sent when the backend is not configured.
+
+=========================================================
+10. PRIVATE ADMIN DASHBOARD
+=========================================================
+
+The admin dashboard is strictly private.
+
+Its route may be /admin.
+
+The route must not be linked from any public-facing page.
+
+Do not display the dashboard in the public navigation, homepage,
+footer, sitemap or public content.
+
+The website owner should access it directly using the private URL.
+
+IMPORTANT:
+A private URL alone is not authentication.
+
+Implement secure authentication and authorisation.
+
+AUTHENTICATION
+
+Use Supabase Auth.
+
+Do not hard-code administrator passwords into the application.
+
+Do not expose passwords in frontend JavaScript, HTML, source maps,
+logs, GitHub or database queries.
+
+Do not provide public administrator registration.
+
+Set up the initial administrator securely through a documented
+Supabase Auth process.
+
+Only explicitly authorised administrator accounts may use
+administrative functions.
+
+The owner may configure an initial password during secure setup.
+The application must never assume a password is configured until
+the authentication account has been created.
+
+The application must support password changes and secure sign-out.
+
+Protect administrative routes and operations using appropriate
+server-side checks and Supabase permissions.
+
+Unauthenticated users must not be able to view protected dashboard
+data or perform administrative actions.
+
+DASHBOARD FEATURES
+
+Create a clean, responsive dashboard with a private sidebar.
+
+Include:
+
+- Overview
+- Learning resources
+- Articles
+- Podcast episodes
+- Impact stories
+- Media library
+- Drafts
+- Published content
+- Basic editable site content
+- Account settings where supported
+- Sign out
+
+Provide content-management forms that support creating, editing,
+previewing, publishing, unpublishing and deleting content.
+
+Allow the administrator to save unfinished work as a draft.
+
+Use clear status indicators and confirmation dialogs for destructive
+actions.
+
+Validate form fields before saving.
+
+Display accurate loading, success, empty and error states.
+
+Never display a success message when an operation has failed.
+
+Do not use hard-coded content arrays as a substitute for real
+database operations.
+
+If the database is unavailable, display an appropriate error state.
+
+=========================================================
+11. SUPABASE DATABASE ARCHITECTURE
+=========================================================
+
+Use Supabase PostgreSQL for persistent content.
+
+Design a maintainable schema with version-controlled SQL migrations.
+
+Create suitable tables for:
+
+- Learning resources
+- Categories
+- Tags, if required
+- Podcast episodes
+- Impact stories
+- Editable site content
+- Newsletter subscriptions, if implemented
+- Contact submissions, if implemented
+
+Use appropriate primary keys, foreign keys, unique constraints,
+timestamps, indexes and relationships.
+
+Use a consistent publication model, such as draft and published.
+
+Ensure public visitors can read only published content.
+
+Ensure administrative content changes require proper authorisation.
+
+Enable Row Level Security on tables that expose data through
+Supabase APIs.
+
+Write explicit policies for public reads and administrative writes.
+
+Do not create unrestricted policies for convenience.
+
+Do not assume that hiding interface controls provides database
+security.
+
+Do not expose service-role keys, secret keys or privileged credentials
+to the browser.
+
+Use the least-privilege approach.
+
+Use Supabase Storage for supported media uploads.
+
+Configure appropriate permissions for media files.
+
+Validate file types, file sizes and upload permissions.
+
+Use stable references to stored assets rather than relying on
+temporary local file paths.
+
+Provide SQL migration files and clear instructions for applying them.
+
+Do not assume the database exists or is configured until the
+necessary setup has been completed.
+
+=========================================================
+12. APPLICATION ARCHITECTURE
+=========================================================
+
+Preferred technology stack:
+
+- Next.js
+- TypeScript
+- React
+- Tailwind CSS or an equivalent consistent styling system
+- Supabase
+- PostgreSQL
+- Supabase Auth
+- Supabase Storage
+- Vercel
+- GitHub
+
+Use a compatible, supported configuration.
+
+Before implementation, inspect the capabilities and limitations
+of the active Google AI Studio environment.
+
+If the requested framework cannot be generated reliably in the
+current environment, explain the limitation and select a compatible
+approach without mixing incompatible configurations.
+
+Keep the code modular and maintainable.
+
+Separate:
+
+- Public pages
+- Private administrative pages
+- Authentication
+- Database access
+- Content models
+- Validation
+- Shared components
+- Styling
+- Configuration
+- Error handling
+
+Use TypeScript types for database records and application data.
+
+Avoid unnecessary dependencies and duplicated logic.
+
+Do not put privileged database operations into client-side code.
+
+Where server-side functionality is required, implement it using
+the supported server-side architecture.
+
+Do not assume that every operation can safely run in the browser.
+
+=========================================================
+13. ENVIRONMENT VARIABLES AND SECRETS
+=========================================================
+
+Use environment variables for configuration.
+
+For example, a Supabase configuration may require:
+
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+
+Use the correct supported key type for the selected Supabase project.
+
+These example values are placeholders, not actual credentials.
+
+Do not generate fictional working credentials.
+
+Do not commit .env files containing real secrets.
+
+Provide an .env.example file with placeholders only.
+
+Document which environment variables are required and where they
+must be configured.
+
+Configure environment variables separately for local development,
+Vercel preview deployments and production as appropriate.
+
+Any service-role key or other privileged secret must remain
+server-side and must never use a NEXT_PUBLIC_ prefix.
+
+If an optional integration is not configured, disable it gracefully
+and explain what setup is required.
+
+Never display secrets in error messages or logs.
+
+=========================================================
+14. VERCEL DEPLOYMENT COMPATIBILITY
+=========================================================
+
+The finished application must be prepared for deployment to Vercel.
+
+Do not assume that successful preview rendering guarantees a
+successful production build.
+
+Before declaring the project ready, perform all checks that the
+environment actually supports.
+
+Check:
+
+- Framework compatibility
+- package.json
+- Dependency versions
+- Build scripts
+- TypeScript compilation
+- Import paths
+- Missing modules
+- Server/client component boundaries
+- Environment-variable access
+- Server-side rendering
+- Browser-only APIs
+- Image and font paths
+- Database integration
+- Authentication
+- Protected routes
+- Form submissions
+- Navigation
+- Responsive layouts
+- Production build output
+
+Avoid unnecessary custom Vercel configuration.
+
+Do not introduce incompatible framework settings.
+
+Do not require local development credentials to be committed
+to GitHub.
+
+Do not make the application depend on temporary preview data.
+
+Document the deployment process.
+
+The documentation must explain how to:
+
+1. Create the Supabase project.
+2. Apply database migrations.
+3. Configure Supabase authentication.
+4. Create the authorised administrator.
+5. Configure Supabase Storage.
+6. Set environment variables.
+7. Connect the repository to GitHub.
+8. Import the project into Vercel.
+9. Configure Vercel environment variables.
+10. Run a preview deployment.
+11. Test the application.
+12. Deploy to production.
+13. Connect a custom domain, if desired.
+
+Do not claim that the application has been deployed unless it
+has actually been deployed.
+
+=========================================================
+15. SEARCH ENGINE OPTIMISATION
+=========================================================
+
+Optimise the public website for search-engine discovery.
+
+Implement:
+
+- Unique page titles
+- Appropriate meta descriptions
+- Meaningful URL slugs
+- Canonical URLs where appropriate
+- Open Graph metadata
+- XML sitemap
+- robots.txt
+- Descriptive image alternative text
+- Logical heading structure
+- Internal links
+- Structured data where valid
+- Responsive layouts
+- Efficient page loading
+
+Give each published lesson, article, impact story and podcast episode
+its own meaningful URL.
+
+Ensure private dashboard pages and authentication pages are not
+intended for search indexing.
+
+Use appropriate noindex directives where needed.
+
+Do not rely on robots.txt to secure private routes.
+
+Do not promise specific Google rankings.
+
+Prioritise useful, original, accurate and accessible content.
+
+=========================================================
+16. SEARCH AND CONTENT DISCOVERY
+=========================================================
+
+Build a useful site-wide search experience.
+
+Allow visitors to discover relevant published content across
+the supported public content types.
+
+Provide filters where appropriate, including:
+
+- Content type
+- Subject
+- Category
+- Topic
+- Relevant tags
+
+Show useful empty states when no results are found.
+
+Provide links to related content.
+
+Use a database-backed approach suitable for the expected size
+of the content library.
+
+Do not retrieve unpublished drafts through public search.
+
+Do not implement expensive or inefficient database queries
+without a clear reason.
+
+=========================================================
+17. ACCESSIBILITY AND RESPONSIVE DESIGN
+=========================================================
+
+Ensure the website works across:
+
+- Mobile phones
+- Tablets
+- Laptops
+- Desktop screens
+
+Use semantic HTML and accessible interaction patterns.
+
+Provide:
+
+- Keyboard navigation
+- Visible focus indicators
+- Appropriate colour contrast
+- Proper form labels
+- Accessible menus
+- Descriptive button labels
+- Appropriate alternative text
+- Responsive images
+- Useful loading states
+- Reduced-motion support
+- Accessible error messages
+
+Avoid horizontal overflow.
+
+Avoid unnecessary autoplay.
+
+Do not make animations essential to understanding content.
+
+Prioritise the experience of users with different devices,
+connection speeds and accessibility needs.
+
+=========================================================
+18. PERFORMANCE AND RELIABILITY
+=========================================================
+
+Optimise for performance without sacrificing usability.
+
+Use appropriately sized images and efficient loading strategies.
+
+Avoid unnecessary client-side JavaScript.
+
+Avoid repeated database requests where reasonable.
+
+Use appropriate pagination for growing content libraries.
+
+Handle network errors and database failures gracefully.
+
+Do not silently return fake data when a database request fails.
+
+Do not display misleading success messages.
+
+Provide meaningful error messages to users and more detailed
+diagnostic information only in appropriate server-side logs.
+
+Never log passwords, secret keys or sensitive form content.
+
+=========================================================
+19. SECURITY REQUIREMENTS
+=========================================================
+
+Apply secure development practices throughout the application.
+
+Requirements include:
+
+- Secure authentication
+- Proper server-side authorisation
+- Supabase Row Level Security
+- Restricted administrative operations
+- Protected unpublished content
+- Environment-variable management
+- Input validation
+- Safe output rendering
+- Secure file-upload validation
+- Appropriate session management
+- Secure sign-out
+- Rate limiting or abuse protection where appropriate
+- Spam protection for public forms
+- No exposed privileged keys
+- No hard-coded administrator passwords
+
+Do not treat a hidden URL as a substitute for authentication.
+
+Do not treat frontend role checks as a substitute for server-side
+authorisation and database policies.
+
+Do not provide unrestricted administrator access to any authenticated
+user.
+
+=========================================================
+20. ANALYTICS AND FUTURE GROWTH
+=========================================================
+
+Design the architecture so the website can grow over time.
+
+Potential future features include:
+
+- More learning subjects
+- Interactive quizzes
+- Learner progress tracking
+- Additional podcast formats
+- Newsletter campaigns
+- Event announcements
+- Community participation
+- Advanced search
+- Content recommendations
+- Analytics
+- Carefully controlled AI-assisted educational explanations
+
+Do not implement complex future features prematurely.
+
+Do not introduce paid external services without identifying
+the dependency and any associated cost.
+
+If analytics are added, respect applicable privacy requirements
+and provide appropriate disclosures and controls.
+
+Do not collect unnecessary personal information.
+
+=========================================================
+21. TESTING
+=========================================================
+
+Test the application using the tools available in the development
+environment.
+
+At minimum, verify where technically possible:
+
+PUBLIC WEBSITE
+- Homepage rendering
+- Navigation
+- Individual content pages
+- Search
+- Empty content states
+- Mobile responsiveness
+- Contact form validation
+- Newsletter form validation, if implemented
+
+ADMIN DASHBOARD
+- Direct access to the private route
+- Unauthenticated access rejection
+- Administrator authentication
+- Sign-out
+- Content creation
+- Content editing
+- Draft saving
+- Publishing
+- Unpublishing
+- Deletion confirmation
+- Media upload permissions
+- Database failure handling
+
+SECURITY
+- Unauthorised administrative access
+- Public access to unpublished content
+- Supabase RLS enforcement
+- Exposure of privileged credentials
+- Access to private contact submissions
+- Access to private newsletter records
+
+BUILD AND DEPLOYMENT
+- Dependency installation
+- TypeScript checks
+- Production build
+- Missing environment variables
+- Broken imports
+- Invalid routes
+- Static asset resolution
+- Vercel compatibility
+
+Do not fabricate test results.
+
+Clearly distinguish tests that passed from tests that were not
+performed or require live credentials.
+
+=========================================================
+22. DOCUMENTATION AND HANDOVER
+=========================================================
+
+Provide a README containing:
+
+- Project overview
+- Technology stack
+- Project structure
+- Installation instructions
+- Local development instructions
+- Environment-variable reference
+- Supabase configuration
+- SQL migration instructions
+- Authentication setup
+- Initial administrator setup
+- Storage configuration
+- GitHub workflow
+- Vercel deployment instructions
+- Troubleshooting guide
+- Security considerations
+- Known limitations
+
+Include all necessary migration files and configuration templates.
+
+Make the project understandable to a developer who did not
+participate in the initial build.
+
+=========================================================
+23. IMPLEMENTATION WORKFLOW
+=========================================================
+
+Do not attempt to generate an entire production system in one
+unverified step.
+
+Work in the following phases.
+
+PHASE 1: FOUNDATION
+
+- Inspect the uploaded brand manual.
+- Establish the supported application architecture.
+- Create the design system.
+- Establish the project structure.
+- Build responsive public navigation.
+- Implement the homepage.
+- Implement the initial public pages.
+
+PHASE 2: CONTENT ARCHITECTURE
+
+- Define content models.
+- Create Supabase database migrations.
+- Configure content relationships.
+- Configure publication status.
+- Configure Row Level Security.
+- Configure media storage.
+
+PHASE 3: ADMINISTRATION
+
+- Implement Supabase authentication.
+- Create the private admin route.
+- Protect administrative operations.
+- Build the dashboard interface.
+- Connect content-management forms to the database.
+
+PHASE 4: PUBLIC CONTENT
+
+- Connect the public pages to Supabase.
+- Implement published-content retrieval.
+- Build individual content pages.
+- Implement search and filtering.
+- Implement appropriate empty and error states.
+
+PHASE 5: QUALITY
+
+- Improve accessibility.
+- Improve performance.
+- Implement SEO.
+- Test authentication and permissions.
+- Check the production build.
+- Resolve errors.
+- Prepare deployment documentation.
+
+PHASE 6: DEPLOYMENT
+
+- Prepare the GitHub repository.
+- Configure environment variables.
+- Connect the application to Vercel.
+- Run a preview deployment.
+- Test the live preview.
+- Document any remaining work before production launch.
+
+At the end of each phase, summarise:
+
+1. What was implemented.
+2. Which files were created or modified.
+3. Which tests were actually run.
+4. Which issues remain.
+5. What configuration is required next.
+
+Do not report a phase as complete when its essential functionality
+has not been implemented.
+
+=========================================================
+24. FINAL ACCEPTANCE CRITERIA
+=========================================================
+
+The project is ready for production consideration only when:
+
+- The EUSATIS identity is faithfully represented.
+- The public website is responsive and accessible.
+- The three brand divisions are clearly presented.
+- Public content can be managed through the administrator interface.
+- The administrator interface is not linked from public pages.
+- The administrator interface requires secure authentication.
+- Database permissions are correctly enforced.
+- Published content is publicly accessible.
+- Unpublished content remains protected.
+- Supabase integration is properly configured.
+- Secrets are not exposed.
+- Content operations handle failures correctly.
+- Search and individual content pages work.
+- SEO fundamentals are implemented.
+- The production build succeeds in the tested environment.
+- Vercel deployment instructions are complete.
+- Remaining limitations are documented.
+
+Do not prioritise superficial visual polish over functional integrity.
+
+The finished website should combine thoughtful design, meaningful
+content discovery, secure content management and a reliable technical
+foundation.
+
+Begin by inspecting the available environment and the uploaded brand
+manual, then establish the project structure and implement Phase 1.
+
+Do not stop after presenting a plan. Start building the application
+using the available tools, and clearly identify any step that requires
+external configuration or credentials.

@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-eusatis-cyan: #47c3d3;
+    --color-eusatis-gold: #d6a348;
+    --color-eusatis-terracotta: #d67546;
+    --color-eusatis-slate: #485358;
+    --color-eusatis-soft: #eae5e7;
+    --color-eusatis-dark: #1f272a;
+    --color-eusatis-canvas: #f9fafb;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #2b3438;
+    background-color: #fafaf9;
+    letter-spacing: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Pacaembu', system-ui, sans-serif;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Custom utility styles for Eusatis brand motifs: ovals, arches, curved corners */
+.eusatis-arch {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+}
+
+.eusatis-oval {
+  border-radius: 38% / 46%;
+}
+
+.eusatis-pill-card {
+  border-radius: 1.5rem;
+}
+
+/* Pattern background from brand manual */
+.bg-brand-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(72, 83, 88, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* EUSATIS Interactive Logo Animation Keyframes */
+@keyframes eusatis-spin-smooth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eusatis-spark-bloom {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.2);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(1.15);
+  }
+  65% {
+    opacity: 0.9;
+    transform: translate(calc(var(--dx) * 0.75), calc(var(--dy) * 0.75)) scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+  }
+}
+
+@keyframes eusatis-spark-star-bloom {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.2) rotate(0deg);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(1.2) rotate(45deg);
+  }
+  65% {
+    opacity: 0.95;
+    transform: translate(calc(var(--dx) * 0.75), calc(var(--dy) * 0.75)) scale(0.95) rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.25) rotate(135deg);
+  }
+}
+
+@keyframes eusatis-spark-trail-bloom {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(1.1);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(calc(var(--dx) * 0.75), calc(var(--dy) * 0.75)) scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+  }
+}
+
+@keyframes eusatis-subtle-idle-glow {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Enticing Floating Animations for Hero Pathway Buttons */
+@keyframes eusatis-hero-float-1 {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 4px 14px -2px rgba(71, 195, 211, 0.25);
+  }
+  50% {
+    transform: translateY(-7px);
+    box-shadow: 0 14px 24px -4px rgba(71, 195, 211, 0.45);
+  }
+}
+
+@keyframes eusatis-hero-float-2 {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 4px 14px -2px rgba(214, 163, 72, 0.22);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 26px -4px rgba(214, 163, 72, 0.4);
+  }
+}
+
+@keyframes eusatis-hero-float-3 {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 4px 14px -2px rgba(214, 117, 70, 0.22);
+  }
+  50% {
+    transform: translateY(-6px);
+    box-shadow: 0 13px 22px -4px rgba(214, 117, 70, 0.38);
+  }
+}
+
+.animate-hero-float-1 {
+  animation: eusatis-hero-float-1 3.6s ease-in-out infinite;
+}
+
+.animate-hero-float-2 {
+  animation: eusatis-hero-float-2 4.0s ease-in-out infinite 0.45s;
+}
+
+.animate-hero-float-3 {
+  animation: eusatis-hero-float-3 4.4s ease-in-out infinite 0.9s;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-eusatis-spin,
+  .animate-hero-float-1,
+  .animate-hero-float-2,
+  .animate-hero-float-3 {
+    animation: none !important;
+  }
+}
+
