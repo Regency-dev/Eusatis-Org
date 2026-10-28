@@ -23,6 +23,11 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({
 }) => {
   const config = useSiteIcon(id);
   const defaultDimensions = config.defaultDimensions || DEFAULT_SITE_ICONS[id]?.defaultDimensions;
+  const [imgFailed, setImgFailed] = React.useState(false);
+
+  React.useEffect(() => {
+    setImgFailed(false);
+  }, [config.value, config.type]);
 
   // Determine sizing: if caller provided w- or h- in className, respect it;
   // otherwise, automatically lock to the design system's canonical default size.
@@ -34,7 +39,7 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({
   const resolvedPixelSize = size || defaultDimensions?.pixelSize || 20;
 
   const styleOverride = typeof resolvedPixelSize === 'number'
-    ? undefined // let Tailwind class handle it for responsiveness, or use style if explicitly requested
+    ? undefined
     : undefined;
 
   // 1. If custom SVG code
@@ -50,8 +55,15 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({
     );
   }
 
-  // 2. If Image URL or uploaded graphic asset
-  if (config.type === 'url' && config.value) {
+  // 2. If Image URL or uploaded graphic asset (with resilient local and Lucide fallback)
+  if (config.type === 'url' && config.value && !imgFailed) {
+    let localMirrorUrl = '';
+    if (id.includes('mind')) localMirrorUrl = '/assets/icons/eusatis_mind.png';
+    else if (id === 'hero_talks' || id === 'arm_talks') localMirrorUrl = '/assets/icons/beautiful_talks.png';
+    else if (id === 'pillar_talks' || id === 'talks_recommend_guest') localMirrorUrl = '/assets/icons/podcast_1.png';
+    else if (id.includes('impact')) localMirrorUrl = '/assets/icons/eusatis_impact.png';
+    else if (id === 'badge_emblem') localMirrorUrl = '/assets/icons/sparkles.png';
+
     return (
       <span
         className={`inline-flex items-center justify-center shrink-0 aspect-square overflow-hidden relative select-none pointer-events-none ${sizeClass} ${className}`}
@@ -62,14 +74,22 @@ export const DynamicIcon: React.FC<DynamicIconProps> = ({
           src={config.value}
           alt={config.label}
           className="w-full h-full max-w-full max-h-full object-contain object-center block shrink-0"
-          loading="lazy"
+          loading="eager"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (localMirrorUrl && target.src !== window.location.origin + localMirrorUrl && !target.src.endsWith(localMirrorUrl)) {
+              target.src = localMirrorUrl;
+            } else {
+              setImgFailed(true);
+            }
+          }}
         />
       </span>
     );
   }
 
-  // 3. Lucide icon name resolution
-  const iconName = config.value || config.fallbackLucide || 'Sparkles';
+  // 3. Lucide icon name resolution (used as high-fidelity fallback or explicit icon choice)
+  const iconName = config.type === 'lucide' && config.value ? config.value : (config.fallbackLucide || 'Sparkles');
   const IconComponent = (LucideIcons as Record<string, any>)[iconName] ||
     (LucideIcons as Record<string, any>)[config.fallbackLucide] ||
     LucideIcons.Sparkles;

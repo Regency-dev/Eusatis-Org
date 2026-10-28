@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { SearchModal } from './components/SearchModal';
 import { VolunteerModal } from './components/VolunteerModal';
+import { VoiceAccessibilityBar } from './components/VoiceAccessibilityBar';
 import { HomePage } from './pages/HomePage';
 import { MindPage } from './pages/MindPage';
 import { MindDetailPage } from './pages/MindDetailPage';
@@ -14,6 +15,7 @@ import { ContactPage } from './pages/ContactPage';
 import { AdminPage } from './pages/AdminPage';
 import { LearningResource, PodcastEpisode, ImpactStory } from './types';
 import { contentService } from './lib/supabaseClient';
+import { voiceService } from './lib/voiceAccessibility';
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
@@ -136,12 +138,31 @@ export default function App() {
       window.history.pushState(null, '', '/admin');
     } else if (slug && route === 'mind-detail') {
       window.history.pushState(null, '', `/mind/${slug}`);
+      voiceService.announce(`Navigated to lesson detail page.`, 'navigate');
     } else if (slug && route === 'impact-detail') {
       window.history.pushState(null, '', `/impact/${slug}`);
+      voiceService.announce(`Navigated to impact story detail page.`, 'navigate');
     } else if (route === 'home') {
       window.history.pushState(null, '', '/');
+      voiceService.announce('Navigated to Eusatis Home: The Joy of Understanding More.', 'navigate');
+    } else if (route === 'mind') {
+      window.history.pushState(null, '', '/mind');
+      voiceService.announce('Navigated to Eusatis Mind educational curriculum. 7 academic disciplines available.', 'navigate');
+    } else if (route === 'talks') {
+      window.history.pushState(null, '', '/talks');
+      voiceService.announce('Navigated to Beyoutiful Talks: Video and Audio Podcast Conversations.', 'navigate');
+    } else if (route === 'impact') {
+      window.history.pushState(null, '', '/impact');
+      voiceService.announce('Navigated to Eusatis Impact: Real-world science and community initiatives.', 'navigate');
+    } else if (route === 'about') {
+      window.history.pushState(null, '', '/about');
+      voiceService.announce('Navigated to About Eusatis: Our Philosophy and Three Arms.', 'navigate');
+    } else if (route === 'contact') {
+      window.history.pushState(null, '', '/contact');
+      voiceService.announce('Navigated to Contact and Inquiries.', 'navigate');
     } else {
       window.history.pushState(null, '', `/${route}`);
+      voiceService.announce(`Navigated to ${route}.`, 'navigate');
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -244,6 +265,9 @@ export default function App() {
         onClose={() => setVolunteerModalState({ isOpen: false })}
         defaultInitiative={volunteerModalState.initiative}
       />
+
+      {/* Floating Voice Accessibility & Screen Reader Engine */}
+      <VoiceAccessibilityBar currentRoute={currentRoute} />
     </div>
   );
 }

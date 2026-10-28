@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Mic, Send, CheckCircle2, Sparkles, User, Mail, MessageSquare } from 'lucide-react';
 import { EusatisLogo } from './EusatisLogo';
+import { DynamicIcon } from './DynamicIcon';
 import { contentService } from '../lib/supabaseClient';
 
 interface RecommendGuestModalProps {
@@ -97,8 +98,8 @@ ${formData.storyReason}`
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-[#FAF7F5]">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-2xl bg-[#D6A348]/20 flex items-center justify-center text-[#B47818]">
-              <Mic className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-2xl bg-[#D6A348]/20 flex items-center justify-center text-[#B47818] shrink-0 aspect-square overflow-hidden shadow-2xs">
+              <DynamicIcon id="talks_recommend_guest" className="w-5 h-5 text-[#B47818]" fallback={<Mic className="w-5 h-5" />} />
             </div>
             <div>
               <div className="text-xs font-bold text-[#B47818] uppercase tracking-wider font-mono">

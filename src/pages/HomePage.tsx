@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, BookOpen, Mic, Heart, Lightbulb, Compass, Users } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { ArrowRight, BookOpen, Mic, Heart, Lightbulb, Compass, Users, ChevronLeft, ChevronRight, Clock, Sparkles } from 'lucide-react';
 import { EusatisLogo } from '../components/EusatisLogo';
 import { BrandPattern } from '../components/BrandPattern';
 import { AhaExperience } from '../components/AhaExperience';
@@ -25,8 +25,26 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenVolunteer
 }) => {
   const featuredEpisode = episodes[0];
-  const featuredResources = resources.slice(0, 3);
   const featuredStory = stories[0];
+
+  const resourcesCarouselRef = useRef<HTMLDivElement>(null);
+  const [activeResourceIndex, setActiveResourceIndex] = useState(0);
+
+  const scrollResources = (direction: 'left' | 'right') => {
+    if (resourcesCarouselRef.current) {
+      const scrollAmount = direction === 'left' ? -380 : 380;
+      resourcesCarouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const handleResourceScroll = () => {
+    if (resourcesCarouselRef.current) {
+      const scrollLeft = resourcesCarouselRef.current.scrollLeft;
+      const cardWidth = 380;
+      const newIndex = Math.round(scrollLeft / cardWidth);
+      setActiveResourceIndex(Math.min(newIndex, Math.max(0, resources.length - 1)));
+    }
+  };
 
   return (
     <div className="space-y-24 pb-20">
@@ -220,9 +238,9 @@ export const HomePage: React.FC<HomePageProps> = ({
         <AhaExperience onNavigate={onNavigate} resources={resources} />
       </section>
 
-      {/* 4. FEATURED LEARNING: EUSATIS MIND */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      {/* 4. CURATED EDUCATIONAL RESOURCES CAROUSEL: EUSATIS MIND */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <CreativeBadge label="EUSATIS MIND" theme="cyan" size="md" />
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-['Outfit'] text-[#1F272A] tracking-tight mt-2">
@@ -232,62 +250,131 @@ export const HomePage: React.FC<HomePageProps> = ({
               Explorations across Agriculture, Engineering, Interdisciplinary Studies, Physics, Biology, and Mathematics.
             </p>
           </div>
-          <button
-            onClick={() => onNavigate('mind')}
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0891B2] hover:text-[#0e7490] transition-colors cursor-pointer font-['Outfit']"
-          >
-            <span>View All Lessons</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <button
+              onClick={() => onNavigate('mind')}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#0891B2] hover:text-[#0e7490] transition-colors cursor-pointer font-['Outfit'] mr-2"
+            >
+              <span>View All Lessons ({resources.length})</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            {/* Carousel Navigation Arrow Controls */}
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollResources('left')}
+                className="p-2.5 rounded-2xl bg-white border border-slate-200 hover:border-[#47C3D3] hover:bg-slate-50 text-slate-700 transition-all shadow-2xs hover:shadow-sm cursor-pointer active:scale-95"
+                title="Previous educational resources"
+                aria-label="Scroll carousel left"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollResources('right')}
+                className="p-2.5 rounded-2xl bg-white border border-slate-200 hover:border-[#47C3D3] hover:bg-slate-50 text-slate-700 transition-all shadow-2xs hover:shadow-sm cursor-pointer active:scale-95"
+                title="Next educational resources"
+                aria-label="Scroll carousel right"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredResources.map((res) => (
+        {/* Carousel Scroll Track: Snap-aligned cards */}
+        <div
+          ref={resourcesCarouselRef}
+          onScroll={handleResourceScroll}
+          className="flex items-stretch gap-6 overflow-x-auto pb-4 pt-2 scroll-smooth snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
+        >
+          {resources.map((res) => (
             <article
               key={res.id}
               onClick={() => onNavigate('mind-detail', res.slug)}
-              className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md hover:border-[#47C3D3] transition-all cursor-pointer flex flex-col group"
+              className="w-[85vw] sm:w-[360px] lg:w-[390px] shrink-0 snap-start bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#47C3D3] transition-all duration-300 cursor-pointer flex flex-col justify-between group"
             >
+              {/* Cover Picture Stage */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                 <img
                   src={res.featured_image}
                   alt={res.title}
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-lg text-xs font-extrabold bg-white/95 text-slate-900 backdrop-blur-xs shadow-xs font-['Outfit']">
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-xl text-xs font-black bg-white/95 text-slate-900 backdrop-blur-xs shadow-xs font-['Outfit'] tracking-wider">
                   {res.subject}
                 </div>
+                {res.simulation?.enabled && (
+                  <div className="absolute top-3 right-3 px-2.5 py-1 rounded-xl text-[10px] font-black bg-[#D6A348] text-[#1F272A] shadow-xs font-['Outfit'] tracking-widest">
+                    <span>SIMULATION</span>
+                  </div>
+                )}
               </div>
 
+              {/* Card Body */}
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  {/* Clean unboxed metadata (NO PILLS) with larger text */}
-                  <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 mb-2 font-medium">
-                    <span>{res.category}</span>
-                    <span aria-hidden="true" className="text-slate-400">·</span>
+                  {/* Clean unboxed metadata (NO PILLS) */}
+                  <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-2 font-medium">
+                    <span className="text-slate-700 font-semibold">{res.category}</span>
+                    <span aria-hidden="true" className="text-slate-300">·</span>
                     <span className="font-semibold text-slate-800">{res.learner_level}</span>
-                    <span aria-hidden="true" className="text-slate-400">·</span>
-                    <span>{res.reading_time_minutes} min read</span>
+                    <span aria-hidden="true" className="text-slate-300">·</span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-slate-400" />
+                      {res.reading_time_minutes} min read
+                    </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold font-['Outfit'] text-slate-900 group-hover:text-[#0891B2] transition-colors line-clamp-2">
+                  <h3 className="text-lg sm:text-xl font-bold font-['Outfit'] text-slate-900 group-hover:text-[#0891B2] transition-colors line-clamp-2 leading-snug">
                     {res.title}
                   </h3>
-                  <p className="text-sm text-slate-600 line-clamp-2 mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 mt-2 leading-relaxed">
                     {res.summary}
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm text-slate-600">
-                  <span className="font-medium">By {res.author}</span>
-                  <span className="font-bold text-[#0891B2] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 font-['Outfit']">
-                    Explore <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="font-medium text-slate-500">By {res.author}</span>
+                  <span className="font-bold text-[#0891B2] group-hover:translate-x-1.5 transition-transform inline-flex items-center gap-1 font-['Outfit']">
+                    <span>Explore Lesson</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Carousel Bottom Pagination / Progress Dots */}
+        <div className="flex items-center justify-between pt-2 border-t border-slate-100">
+          <div className="flex items-center gap-1.5">
+            {resources.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  if (resourcesCarouselRef.current) {
+                    const cardWidth = 380;
+                    resourcesCarouselRef.current.scrollTo({
+                      left: idx * cardWidth,
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  activeResourceIndex === idx
+                    ? 'w-7 bg-[#47C3D3]'
+                    : 'w-2 bg-slate-200 hover:bg-slate-300'
+                }`}
+                aria-label={`Jump to lesson ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <span className="text-xs font-mono text-slate-400 font-medium">
+            Slide {activeResourceIndex + 1} of {resources.length}
+          </span>
         </div>
       </section>
 

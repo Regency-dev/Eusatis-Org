@@ -85,8 +85,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Explore Eusatis Mind (Hero Button)',
     category: 'Hero Pathways',
     description: 'Icon shown in the principal "Explore Eusatis Mind" hero action button',
-    type: 'lucide',
-    value: 'BookOpen',
+    type: 'url',
+    value: '/assets/icons/eusatis_mind.png',
     fallbackLucide: 'BookOpen',
     defaultDimensions: {
       pixelSize: 16,
@@ -101,8 +101,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Beyoutiful Talks (Hero Button)',
     category: 'Hero Pathways',
     description: 'Icon shown in the "Beyoutiful Talks" hero action button',
-    type: 'lucide',
-    value: 'Mic',
+    type: 'url',
+    value: '/assets/icons/beautiful_talks.png',
     fallbackLucide: 'Mic',
     defaultDimensions: {
       pixelSize: 16,
@@ -117,8 +117,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Eusatis Impact (Hero Button)',
     category: 'Hero Pathways',
     description: 'Icon shown in the "Eusatis Impact" hero action button',
-    type: 'lucide',
-    value: 'Heart',
+    type: 'url',
+    value: '/assets/icons/eusatis_impact.png',
     fallbackLucide: 'Heart',
     defaultDimensions: {
       pixelSize: 16,
@@ -135,8 +135,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Eusatis Mind (Philosophy Pillar)',
     category: 'Core Pillars',
     description: 'Emblem for the Eusatis Mind educational card in The Eusatis Experience',
-    type: 'lucide',
-    value: 'Lightbulb',
+    type: 'url',
+    value: '/assets/icons/eusatis_mind.png',
     fallbackLucide: 'Lightbulb',
     defaultDimensions: {
       pixelSize: 24,
@@ -151,8 +151,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Beyoutiful Talks (Philosophy Pillar)',
     category: 'Core Pillars',
     description: 'Emblem for the Beyoutiful Talks authenticity card in The Eusatis Experience',
-    type: 'lucide',
-    value: 'Compass',
+    type: 'url',
+    value: '/assets/icons/podcast_1.png',
     fallbackLucide: 'Compass',
     defaultDimensions: {
       pixelSize: 24,
@@ -167,8 +167,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Eusatis Impact (Philosophy Pillar)',
     category: 'Core Pillars',
     description: 'Emblem for the Eusatis Impact action card in The Eusatis Experience',
-    type: 'lucide',
-    value: 'Users',
+    type: 'url',
+    value: '/assets/icons/eusatis_impact.png',
     fallbackLucide: 'Users',
     defaultDimensions: {
       pixelSize: 24,
@@ -185,8 +185,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'The Three Arms: Eusatis Mind (About Page)',
     category: 'Core Pillars',
     description: 'Icon shown in the Eusatis Mind card under "The Three Eusatis Arms" on the About page',
-    type: 'lucide',
-    value: 'BookOpen',
+    type: 'url',
+    value: '/assets/icons/eusatis_mind.png',
     fallbackLucide: 'BookOpen',
     defaultDimensions: {
       pixelSize: 24,
@@ -201,8 +201,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'The Three Arms: Eusatis Talks (About Page)',
     category: 'Core Pillars',
     description: 'Icon shown in the Eusatis Talks card under "The Three Eusatis Arms" on the About page',
-    type: 'lucide',
-    value: 'Mic',
+    type: 'url',
+    value: '/assets/icons/beautiful_talks.png',
     fallbackLucide: 'Mic',
     defaultDimensions: {
       pixelSize: 24,
@@ -217,8 +217,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'The Three Arms: Eusatis Impact (About Page)',
     category: 'Core Pillars',
     description: 'Icon shown in the Eusatis Impact card under "The Three Eusatis Arms" on the About page',
-    type: 'lucide',
-    value: 'Heart',
+    type: 'url',
+    value: '/assets/icons/eusatis_impact.png',
     fallbackLucide: 'Heart',
     defaultDimensions: {
       pixelSize: 24,
@@ -226,6 +226,24 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
       boxClassName: 'w-12 h-12 rounded-2xl bg-[#D67546]/15 text-[#D67546]',
       boxPadding: 'p-3',
       boxDescription: '48×48px Three Arms Box'
+    }
+  },
+
+  // Recommend Guest Action & Modal Icon (Talks Navigation Plane)
+  talks_recommend_guest: {
+    id: 'talks_recommend_guest',
+    label: 'Recommend Guest (Talks Modal Header & Button)',
+    category: 'Core Pillars',
+    description: 'Icon displayed in the "Recommend a Guest" action button and nomination modal header in Beyoutiful Talks',
+    type: 'lucide',
+    value: 'Mic',
+    fallbackLucide: 'Mic',
+    defaultDimensions: {
+      pixelSize: 20,
+      className: 'w-5 h-5',
+      boxClassName: 'w-9 h-9 rounded-2xl bg-[#D6A348]/20 text-[#B47818]',
+      boxPadding: 'p-2',
+      boxDescription: '36×36px Recommend Guest Modal Badge'
     }
   },
 
@@ -349,8 +367,8 @@ export const DEFAULT_SITE_ICONS: Record<string, SiteIconConfig> = {
     label: 'Creative Badge Graphic Motif',
     category: 'Badges & Emblems',
     description: 'The geometric emblem rendered beside uppercase section headers',
-    type: 'emblem',
-    value: 'brand_dual_oval',
+    type: 'url',
+    value: '/assets/icons/sparkles.png',
     fallbackLucide: 'Sparkles',
     defaultDimensions: {
       pixelSize: 16,
@@ -420,12 +438,21 @@ class IconManagerService {
         const merged: Record<string, SiteIconConfig> = { ...DEFAULT_SITE_ICONS };
         for (const [key, val] of Object.entries(parsed)) {
           if (merged[key] && val && typeof val === 'object') {
-            merged[key] = {
-              ...merged[key],
-              ...(val as Partial<SiteIconConfig>),
-              // Preserve official defaultDimensions so sizing remains guaranteed
-              defaultDimensions: DEFAULT_SITE_ICONS[key]?.defaultDimensions || (val as any).defaultDimensions
-            };
+            const parsedVal = val as Partial<SiteIconConfig>;
+            // If stored value is just a stale Lucide icon that matched the previous initial placeholder,
+            // upgrade to the rich brand asset
+            const isStalePlaceholder =
+              parsedVal.type === 'lucide' &&
+              DEFAULT_SITE_ICONS[key]?.type === 'url' &&
+              (parsedVal.value === DEFAULT_SITE_ICONS[key]?.fallbackLucide || !parsedVal.value);
+
+            if (!isStalePlaceholder) {
+              merged[key] = {
+                ...merged[key],
+                ...parsedVal,
+                defaultDimensions: DEFAULT_SITE_ICONS[key]?.defaultDimensions || (parsedVal as any).defaultDimensions
+              };
+            }
           }
         }
         return merged;
@@ -451,6 +478,7 @@ class IconManagerService {
     if (!isSupabaseConfigured() || !supabase || this.isSyncing) return;
     this.isSyncing = true;
     try {
+      // 1. Primary check: dedicated site_icons table
       const { data, error } = await supabase.from('site_icons').select('*');
       if (!error && Array.isArray(data) && data.length > 0) {
         let updated = false;
@@ -469,9 +497,44 @@ class IconManagerService {
         if (updated) {
           this.saveToStorage();
         }
+        return;
       }
-    } catch {
-      // Table might not exist yet; gracefully fallback to localStorage
+
+      // 2. Resilient backup: read synchronized icon registry from confirmed public site_images table
+      const { data: registryRow, error: registryError } = await supabase
+        .from('site_images')
+        .select('*')
+        .eq('id', 'site_icons_config')
+        .maybeSingle();
+
+      if (!registryError && registryRow && registryRow.current_url) {
+        try {
+          const parsed = JSON.parse(registryRow.current_url);
+          if (parsed && typeof parsed === 'object') {
+            let updated = false;
+            for (const [id, cfg] of Object.entries(parsed)) {
+              if (cfg && typeof cfg === 'object') {
+                const configObj = cfg as Partial<SiteIconConfig>;
+                if (configObj.value && configObj.type) {
+                  this.icons[id] = {
+                    ...(this.icons[id] || DEFAULT_SITE_ICONS[id]),
+                    ...configObj,
+                    defaultDimensions: DEFAULT_SITE_ICONS[id]?.defaultDimensions || (configObj as any).defaultDimensions
+                  };
+                  updated = true;
+                }
+              }
+            }
+            if (updated) {
+              this.saveToStorage();
+            }
+          }
+        } catch (jsonErr) {
+          console.warn('Failed to parse site_icons_config JSON from Supabase:', jsonErr);
+        }
+      }
+    } catch (err) {
+      console.warn('Supabase icon fetch fallback notice:', err);
     } finally {
       this.isSyncing = false;
     }
@@ -480,6 +543,7 @@ class IconManagerService {
   public async syncToSupabase(id: string, config: SiteIconConfig): Promise<void> {
     if (!isSupabaseConfigured() || !supabase) return;
     try {
+      // 1. Attempt write to site_icons table
       await supabase.from('site_icons').upsert({
         id,
         label: config.label,
@@ -491,7 +555,24 @@ class IconManagerService {
         updated_at: new Date().toISOString()
       }, { onConflict: 'id' });
     } catch (err) {
-      console.warn('Supabase icon sync non-fatal warning:', err);
+      console.warn('Supabase site_icons table sync notice:', err);
+    }
+
+    try {
+      // 2. Resilient backup write to confirmed active site_images table
+      await supabase.from('site_images').upsert({
+        id: 'site_icons_config',
+        label: 'Custom Site Icons Configuration Registry',
+        location_description: 'Synchronized registry of custom site icons across deployments',
+        category: 'hero',
+        current_url: JSON.stringify(this.icons),
+        default_url: '{}',
+        alt_text: 'site_icons_data',
+        aspect_ratio_label: 'Registry JSON',
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'id' });
+    } catch (err) {
+      console.warn('Supabase site_images icon registry backup notice:', err);
     }
   }
 
@@ -535,7 +616,7 @@ class IconManagerService {
     };
   }
 
-  public update(id: string, updates: Partial<SiteIconConfig>) {
+  public async update(id: string, updates: Partial<SiteIconConfig>): Promise<void> {
     const existing = this.get(id);
     let finalValue = updates.value !== undefined ? updates.value : existing.value;
     const finalType = updates.type || existing.type;
@@ -556,22 +637,22 @@ class IconManagerService {
 
     this.icons[id] = updatedConfig;
     this.saveToStorage();
-    this.syncToSupabase(id, updatedConfig);
+    await this.syncToSupabase(id, updatedConfig);
   }
 
-  public reset(id: string) {
+  public async reset(id: string): Promise<void> {
     if (DEFAULT_SITE_ICONS[id]) {
       this.icons[id] = { ...DEFAULT_SITE_ICONS[id] };
       this.saveToStorage();
-      this.syncToSupabase(id, DEFAULT_SITE_ICONS[id]);
+      await this.syncToSupabase(id, DEFAULT_SITE_ICONS[id]);
     }
   }
 
-  public resetAll() {
+  public async resetAll(): Promise<void> {
     this.icons = { ...DEFAULT_SITE_ICONS };
     this.saveToStorage();
     for (const [id, cfg] of Object.entries(DEFAULT_SITE_ICONS)) {
-      this.syncToSupabase(id, cfg);
+      await this.syncToSupabase(id, cfg);
     }
   }
 

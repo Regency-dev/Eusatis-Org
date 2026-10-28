@@ -400,25 +400,29 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
     }
   };
 
-  const handleSaveIcon = (e: React.FormEvent) => {
+  const handleSaveIcon = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingIcon) return;
-    iconManager.update(editingIcon.id, {
-      type: iconFormType,
-      value: iconFormValue
-    });
-    showFeedback(`Successfully updated icon "${editingIcon.label}"`);
-    setEditingIcon(null);
+    try {
+      await iconManager.update(editingIcon.id, {
+        type: iconFormType,
+        value: iconFormValue
+      });
+      showFeedback(`Successfully updated icon "${editingIcon.label}"`);
+      setEditingIcon(null);
+    } catch (err: any) {
+      showFeedback(`Failed to update icon: ${err.message}`, 'error');
+    }
   };
 
-  const handleResetIcon = (id: string, label: string) => {
-    iconManager.reset(id);
+  const handleResetIcon = async (id: string, label: string) => {
+    await iconManager.reset(id);
     showFeedback(`Restored "${label}" to brand default`);
   };
 
-  const handleResetAllIcons = () => {
+  const handleResetAllIcons = async () => {
     if (window.confirm('Reset all website icons to original brand defaults?')) {
-      iconManager.resetAll();
+      await iconManager.resetAll();
       showFeedback('All website icons restored to defaults.');
     }
   };
@@ -1721,7 +1725,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
                   <strong>Create Administrator Account:</strong> In your Supabase Dashboard, navigate to <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-900">Authentication &rarr; Users &rarr; Add user &rarr; Create user</span>. Enter your administrator email (e.g. <span className="font-mono text-slate-900">admin@eusatis.org</span>) and choose a secure password. Uncheck &ldquo;Auto Confirm User&rdquo; if you wish to confirm via email, or check it for immediate login.
                 </li>
                 <li>
-                  <strong>Apply SQL Schema & Storage Policies:</strong> Open the Supabase Dashboard <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-900">SQL Editor &rarr; New query</span>, copy and execute the script in <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-800">supabase/migrations/20261025_repair_auth_storage_site_images.sql</code>. This will create the <code className="text-[#0891B2]">site_images</code> table, the <code className="text-[#0891B2]">eusatis-media</code> bucket, and configure Row-Level Security policies.
+                  <strong>Apply SQL Schema & Storage Policies:</strong> Open the Supabase Dashboard <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-900">SQL Editor &rarr; New query</span>, copy and execute the script in <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-800">supabase/migrations/20261025_repair_auth_storage_site_images.sql</code> and <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-800">supabase/migrations/20261026_site_icons_and_box_fitting.sql</code>. This will create the <code className="text-[#0891B2]">site_images</code> and <code className="text-[#0891B2]">site_icons</code> tables, the <code className="text-[#0891B2]">eusatis-media</code> bucket, and configure Row-Level Security policies.
                 </li>
                 <li>
                   <strong>Verify Row-Level Security (RLS):</strong> Public visitors have read-only access to published lessons, podcast episodes, and impact stories. All write, update, and upload permissions are strictly gated to authenticated Supabase accounts.

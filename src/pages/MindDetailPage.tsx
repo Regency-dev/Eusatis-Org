@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Clock, User, Calendar, ChevronDown, ChevronUp, Share2, Check, Play, ExternalLink, Sparkles, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, Clock, User, Calendar, ChevronDown, ChevronUp, Share2, Check, Play, ExternalLink, Sparkles, ArrowRight, Volume2, Square, Pause } from 'lucide-react';
 import { LearningResource } from '../types';
 import { KnowledgeCheckQuiz } from '../components/KnowledgeCheckQuiz';
 import { LessonSimulation } from '../components/LessonSimulation';
@@ -7,6 +7,7 @@ import { EquationBlock } from '../components/EquationBlock';
 import { MathText } from '../components/MathText';
 import { CreativeBadge } from '../components/CreativeBadge';
 import { renderUniversalVideoPlayer } from '../lib/videoUtils';
+import { voiceService, VoiceState } from '../lib/voiceAccessibility';
 
 function renderVideoPlayer(url: string, poster?: string) {
   return renderUniversalVideoPlayer(url, 'Interactive Lesson Video', poster);
@@ -26,6 +27,48 @@ export const MindDetailPage: React.FC<MindDetailPageProps> = ({
   const resource = resources.find((r) => r.slug === slug);
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [voiceState, setVoiceState] = useState<VoiceState>(voiceService.getState());
+
+  useEffect(() => {
+    const unsub = voiceService.subscribe((state) => setVoiceState(state));
+    return () => unsub();
+  }, []);
+
+  const handleReadLesson = () => {
+    if (!resource) return;
+
+    if (voiceState.speaking) {
+      voiceService.stop();
+      return;
+    }
+
+    const sections = [
+      {
+        heading: `Lesson: ${resource.title}`,
+        text: `Field: ${resource.subject}. Level: ${resource.learner_level}. Author: ${resource.author}. Summary: ${resource.summary}`
+      }
+    ];
+
+    if (resource.learning_objectives && resource.learning_objectives.length > 0) {
+      sections.push({
+        heading: 'Learning Objectives',
+        text: resource.learning_objectives.join('. ')
+      });
+    }
+
+    // Clean markdown headings & equations for speech
+    const cleanContent = resource.content
+      .replace(/#{1,4}[ \t]+/g, '')
+      .replace(/\$\$[\s\S]*?\$\$/g, ' mathematical equation ')
+      .replace(/\$([^\$]+)\$/g, ' $1 ');
+
+    sections.push({
+      heading: 'Lesson Content',
+      text: cleanContent
+    });
+
+    voiceService.readSections(sections);
+  };
 
   if (!resource) {
     return (
@@ -58,8 +101,8 @@ export const MindDetailPage: React.FC<MindDetailPageProps> = ({
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-      {/* Top Bar: Back button & share action */}
-      <div className="flex items-center justify-between gap-4">
+      {/* Top Bar: Back button & share action + Voice Accessibility */}
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <button
           onClick={() => onNavigate('mind')}
           className="inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-slate-900 transition-colors cursor-pointer font-['Outfit']"
@@ -68,22 +111,48 @@ export const MindDetailPage: React.FC<MindDetailPageProps> = ({
           <span>Back to Eusatis Mind</span>
         </button>
 
-        <button
-          onClick={handleShare}
-          className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
-        >
-          {copied ? (
-            <>
-              <Check className="w-4 h-4 text-emerald-600" />
-              <span className="text-emerald-700 font-bold">Link Copied</span>
-            </>
-          ) : (
-            <>
-              <Share2 className="w-4 h-4" />
-              <span>Share Lesson</span>
-            </>
-          )}
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Accessible Audio Voice Reader for Lesson */}
+          <button
+            onClick={handleReadLesson}
+            className={`inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all cursor-pointer shadow-xs focus:ring-4 focus:ring-[#47C3D3] focus:outline-hidden ${
+              voiceState.speaking
+                ? 'bg-rose-600 hover:bg-rose-700 text-white animate-pulse'
+                : 'bg-[#1F272A] hover:bg-[#0891B2] text-white'
+            }`}
+            aria-label={voiceState.speaking ? 'Stop reading lesson aloud' : 'Listen to this lesson read aloud'}
+            title="Listen to this lesson read aloud"
+          >
+            {voiceState.speaking ? (
+              <>
+                <Square className="w-3.5 h-3.5 fill-current" />
+                <span>Stop Reading</span>
+              </>
+            ) : (
+              <>
+                <Volume2 className="w-3.5 h-3.5 text-[#47C3D3]" />
+                <span>Listen to Lesson</span>
+              </>
+            )}
+          </button>
+
+          <button
+            onClick={handleShare}
+            className="inline-flex items-center gap-2 px-3.5 py-2 text-xs sm:text-sm font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+          >
+            {copied ? (
+              <>
+                <Check className="w-4 h-4 text-emerald-600" />
+                <span className="text-emerald-700 font-bold">Link Copied</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-4 h-4" />
+                <span>Share Lesson</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Header section with enhanced typography & clear metadata */}

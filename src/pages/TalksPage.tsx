@@ -5,6 +5,7 @@ import { AudioPlayer } from '../components/AudioPlayer';
 import { CreativeBadge } from '../components/CreativeBadge';
 import { RecommendGuestModal } from '../components/RecommendGuestModal';
 import { DynamicImage } from '../components/DynamicImage';
+import { DynamicIcon } from '../components/DynamicIcon';
 import { renderUniversalVideoPlayer } from '../lib/videoUtils';
 
 interface TalksPageProps {
@@ -60,9 +61,9 @@ export const TalksPage: React.FC<TalksPageProps> = ({ episodes, onNavigate }) =>
         <div className="shrink-0">
           <button
             onClick={() => setRecommendModalOpen(true)}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-bold text-sm bg-[#1F272A] hover:bg-slate-800 text-white shadow-sm transition-all cursor-pointer font-['Outfit']"
+            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl font-bold text-sm bg-[#1F272A] hover:bg-slate-800 text-white shadow-sm transition-all cursor-pointer font-['Outfit'] group"
           >
-            <PlusCircle className="w-4 h-4 text-[#D6A348]" />
+            <DynamicIcon id="talks_recommend_guest" className="w-4 h-4 text-[#D6A348] group-hover:rotate-12 transition-transform" fallback={<PlusCircle className="w-4 h-4 text-[#D6A348]" />} />
             <span>Recommend a Guest</span>
           </button>
         </div>
