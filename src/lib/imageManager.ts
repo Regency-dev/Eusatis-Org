@@ -76,10 +76,10 @@ export const DEFAULT_SITE_IMAGES: Record<string, SiteImageConfig> = {
   footer_band_pattern: {
     id: 'footer_band_pattern',
     label: 'Footer Brand Band Pattern (Coloured)',
-    locationDescription: 'The official repeating coloured band pattern spanning across the top edge of the footer (height 1/20 of footer).',
+    locationDescription: 'The official repeating coloured band pattern spanning across the top edge of the footer (height 1/60 of footer).',
     category: 'footer',
-    currentUrl: 'https://i.ibb.co/Z1Bb3LgG/eusatis-assets-Band-Pattern-Coloured.png',
-    defaultUrl: 'https://i.ibb.co/Z1Bb3LgG/eusatis-assets-Band-Pattern-Coloured.png',
+    currentUrl: '/assets/eusatis-assets-Band-Pattern-Coloured.png',
+    defaultUrl: '/assets/eusatis-assets-Band-Pattern-Coloured.png',
     altText: 'Official Eusatis Brand Band Pattern Coloured',
     aspectRatioLabel: 'Repeating Banner Pattern'
   }
@@ -107,9 +107,16 @@ class ImageManager {
         const merged: Record<string, SiteImageConfig> = { ...DEFAULT_SITE_IMAGES };
         for (const [key, val] of Object.entries(parsed)) {
           if (merged[key] && val && typeof val === 'object') {
+            const configVal = val as Partial<SiteImageConfig>;
+            // Protect against broken or expired third-party hotlinks like ibb.co
+            let cleanUrl = configVal.currentUrl;
+            if (cleanUrl && (cleanUrl.includes('ibb.co') || cleanUrl.includes('imgbb.com'))) {
+              cleanUrl = '/assets/eusatis-assets-Band-Pattern-Coloured.png';
+            }
             merged[key] = {
               ...merged[key],
-              ...(val as Partial<SiteImageConfig>)
+              ...configVal,
+              currentUrl: cleanUrl || merged[key].currentUrl
             };
           }
         }
@@ -146,11 +153,15 @@ class ImageManager {
           const id = row.id;
           const currentConfig = this.cache[id] || DEFAULT_SITE_IMAGES[id];
           if (currentConfig && row.current_url) {
+            let rowUrl = row.current_url;
+            if (rowUrl && (rowUrl.includes('ibb.co') || rowUrl.includes('imgbb.com'))) {
+              rowUrl = '/assets/eusatis-assets-Band-Pattern-Coloured.png';
+            }
             this.cache[id] = {
               ...currentConfig,
-              currentUrl: row.current_url,
+              currentUrl: rowUrl,
               altText: row.alt_text ?? currentConfig.altText,
-              defaultUrl: row.default_url ?? currentConfig.defaultUrl
+              defaultUrl: row.default_url && !row.default_url.includes('ibb.co') ? row.default_url : currentConfig.defaultUrl
             };
             updated = true;
           }

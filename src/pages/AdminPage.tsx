@@ -122,7 +122,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onNavigateHome, onRefreshD
     },
     {
       name: 'Brand Band Pattern (Coloured)',
-      url: 'https://i.ibb.co/Z1Bb3LgG/eusatis-assets-Band-Pattern-Coloured.png',
+      url: '/assets/eusatis-assets-Band-Pattern-Coloured.png',
       category: 'Official Brand Asset'
     }
   ];

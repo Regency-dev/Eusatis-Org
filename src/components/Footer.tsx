@@ -12,7 +12,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const footerRef = useRef<HTMLElement>(null);
-  const [patternHeight, setPatternHeight] = useState<number>(28);
+  const [patternHeight, setPatternHeight] = useState<number>(12);
   const [email, setEmail] = useState('');
   const [consent, setConsent] = useState(true);
   const [statusMsg, setStatusMsg] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -21,11 +21,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const [legalDocType, setLegalDocType] = useState<LegalDocType>('privacy');
   const [appStoreNotification, setAppStoreNotification] = useState<string | null>(null);
 
-  // Dynamic editable footer pictures
-  const { url: footerBandUrl } = useSiteImage(
+  // Dynamic editable footer pictures with resilient local bundled default (never external imgbb)
+  const localDefaultBand = '/assets/eusatis-assets-Band-Pattern-Coloured.png';
+  const { url: rawFooterBandUrl } = useSiteImage(
     'footer_band_pattern',
-    'https://i.ibb.co/Z1Bb3LgG/eusatis-assets-Band-Pattern-Coloured.png'
+    localDefaultBand
   );
+  const footerBandUrl = (rawFooterBandUrl && !rawFooterBandUrl.includes('ibb.co') && !rawFooterBandUrl.includes('imgbb.com'))
+    ? rawFooterBandUrl
+    : localDefaultBand;
 
   // Auto-dismiss timer for Stay Connected feedback message
   const statusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -48,13 +52,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     }, durationMs);
   };
 
-  // Measure footer height dynamically so the band pattern height is strictly 1/20 of footer height
+  // Measure footer height dynamically so the band pattern height is strictly 1/60 of footer height
   useEffect(() => {
     const updateHeight = () => {
       if (footerRef.current) {
         const h = footerRef.current.offsetHeight;
         if (h > 0) {
-          setPatternHeight(Math.max(16, Math.round(h / 20)));
+          // Exactly 1/60 of footer height (with min 8px)
+          setPatternHeight(Math.max(8, Math.round(h / 60)));
         }
       }
     };
@@ -111,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       ref={footerRef}
       className="bg-[#1F272A] text-white pb-12 border-t border-slate-800 relative overflow-hidden"
     >
-      {/* Brand Band Pattern: Begins at the very start of the footer; height is exactly 1/20 of the footer's total height */}
+      {/* Brand Band Pattern: Begins at the very start of the footer; height is strictly 1/60 of the footer's total height */}
       <div
         className="w-full overflow-hidden select-none border-b border-slate-800/80 bg-white"
         style={{
