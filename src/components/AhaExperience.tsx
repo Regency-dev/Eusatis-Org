@@ -40,6 +40,7 @@ export const AhaExperience: React.FC<AhaExperienceProps> = ({ onNavigate }) => {
 
   // Slideshow active index: 0 through 6
   const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [isSlidePaused, setIsSlidePaused] = useState<boolean>(false);
 
   // Snell's Law dedicated state for Slide 0
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -418,6 +419,17 @@ export const AhaExperience: React.FC<AhaExperienceProps> = ({ onNavigate }) => {
     setActiveSlide((prev) => (prev === simulationSlides.length - 1 ? 0 : prev + 1));
   };
 
+  // Auto-advance simulation slides every 2.8 seconds
+  useEffect(() => {
+    if (isSlidePaused) return;
+
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev === simulationSlides.length - 1 ? 0 : prev + 1));
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isSlidePaused, simulationSlides.length]);
+
   const handleGoToLesson = (slug: string) => {
     if (onNavigate) {
       onNavigate('mind-detail', slug);
@@ -425,7 +437,13 @@ export const AhaExperience: React.FC<AhaExperienceProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="relative rounded-3xl border border-slate-700/60 shadow-2xl overflow-hidden">
+    <div
+      onMouseEnter={() => setIsSlidePaused(true)}
+      onMouseLeave={() => setIsSlidePaused(false)}
+      onTouchStart={() => setIsSlidePaused(true)}
+      onTouchEnd={() => setIsSlidePaused(false)}
+      className="relative rounded-3xl border border-slate-700/60 shadow-2xl overflow-hidden"
+    >
       {/* 1. Official Eusatis Aha Background Picture from Admin Media Manager (plane_aha) */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <img

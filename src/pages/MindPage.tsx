@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Search, Clock, ArrowRight, ChevronLeft, ChevronRight, SlidersHorizontal, Volume2 } from 'lucide-react';
 import { LearningResource } from '../types';
 import { CreativeBadge } from '../components/CreativeBadge';
@@ -31,6 +31,29 @@ export const MindPage: React.FC<MindPageProps> = ({ resources, onNavigate }) => 
   const [sortBy, setSortBy] = useState<'newest' | 'reading_time'>('newest');
 
   const subjectCarouselRef = useRef<HTMLDivElement>(null);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+
+  // Auto-advance Academic Disciplines carousel every 2.8 seconds
+  useEffect(() => {
+    if (isCarouselPaused) return;
+
+    const interval = setInterval(() => {
+      if (subjectCarouselRef.current) {
+        const container = subjectCarouselRef.current;
+        const firstCard = container.firstElementChild as HTMLElement | null;
+        const cardWidth = firstCard ? firstCard.offsetWidth + 16 : 296;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        if (container.scrollLeft >= maxScroll - 20) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [isCarouselPaused]);
 
   // Curated Subject metadata without any icons, richly styled to captivate visitors
   const subjectMetadata: SubjectCardMeta[] = [
@@ -286,6 +309,10 @@ export const MindPage: React.FC<MindPageProps> = ({ resources, onNavigate }) => 
           ref={subjectCarouselRef}
           role="tablist"
           aria-label="Select an academic discipline to filter learning resources"
+          onMouseEnter={() => setIsCarouselPaused(true)}
+          onMouseLeave={() => setIsCarouselPaused(false)}
+          onTouchStart={() => setIsCarouselPaused(true)}
+          onTouchEnd={() => setIsCarouselPaused(false)}
           className="flex items-stretch gap-4 overflow-x-auto pb-3 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           {subjectMetadata.map((subj, index) => {

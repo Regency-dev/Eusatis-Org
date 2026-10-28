@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { ArrowRight, BookOpen, Mic, Heart, Lightbulb, Compass, Users, ChevronLeft, ChevronRight, Clock, Sparkles } from 'lucide-react';
 import { EusatisLogo } from '../components/EusatisLogo';
 import { BrandPattern } from '../components/BrandPattern';
@@ -29,6 +29,30 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   const resourcesCarouselRef = useRef<HTMLDivElement>(null);
   const [activeResourceIndex, setActiveResourceIndex] = useState(0);
+  const [isResourcesPaused, setIsResourcesPaused] = useState(false);
+
+  // Auto-advance Curated Educational Resources carousel every 2.8 seconds
+  useEffect(() => {
+    if (!resources || resources.length <= 1 || isResourcesPaused) return;
+
+    const interval = setInterval(() => {
+      if (resourcesCarouselRef.current) {
+        const container = resourcesCarouselRef.current;
+        const firstCard = container.firstElementChild as HTMLElement | null;
+        const cardWidth = firstCard ? firstCard.offsetWidth + 24 : 380;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+
+        if (container.scrollLeft >= maxScroll - 20) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+          setActiveResourceIndex(0);
+        } else {
+          container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [resources, isResourcesPaused]);
 
   const scrollResources = (direction: 'left' | 'right') => {
     if (resourcesCarouselRef.current) {
@@ -286,6 +310,10 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div
           ref={resourcesCarouselRef}
           onScroll={handleResourceScroll}
+          onMouseEnter={() => setIsResourcesPaused(true)}
+          onMouseLeave={() => setIsResourcesPaused(false)}
+          onTouchStart={() => setIsResourcesPaused(true)}
+          onTouchEnd={() => setIsResourcesPaused(false)}
           className="flex items-stretch gap-6 overflow-x-auto pb-4 pt-2 scroll-smooth snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           {resources.map((res) => (
